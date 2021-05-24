@@ -3,7 +3,7 @@ import Strings from "./Strings";
 const Header = () => {
     return (
         <div>
-            <h2>Slot Finder India (For All Ages)</h2>
+            <h2>Covid Vaccine Slot Finder India (For All Ages)</h2>
         </div>
     )
 }

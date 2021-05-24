@@ -5,7 +5,8 @@
 table { 
     width: 100%; 
     border-collapse: collapse; 
-  }
+}
+
   /* Zebra striping */
   tr:nth-of-type(odd) { 
     background: #eee; 
@@ -17,6 +18,57 @@ table {
   }
   td, th { 
     padding: 6px; 
-    border: 1px solid #ccc; 
-    text-align: left; 
+    border: 1px solid #ccc;
+    width: fit-content;
+    align-items: left; 
   }
+
+.capacity_available{
+padding:0px 15px 0px 15px;
+background-color: green;
+border-radius: 50%;
+width: fit-content;
+color: white;
+margin-bottom: 10px;
+}
+
+.booked{
+padding:1px 7px 1px 7px;
+background-color: red;
+border-radius: 50%;
+margin-bottom: 10px;
+width: fit-content;
+color: white;
+}
+
+.centers {
+  width: fit-content;
+}
+
+.doses {
+  display: flex;
+  flex-direction: row;
+}
+
+.dose1 {
+  border-right: 1px solid gray;
+  padding: 1px 5px 1px 1px;
+}
+
+.dose2{
+padding: 1px 1px 1px 5px;
+}
+
+.flexbox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.free{
+  color: purple;
+}
+
+.paid{
+  color: red;
+}

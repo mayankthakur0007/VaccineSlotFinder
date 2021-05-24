@@ -1,4 +1,3 @@
-import { forwardRef } from "react";
 import "./Styles.css";
 
 const Results = (props) => {
@@ -22,7 +21,7 @@ const Results = (props) => {
     compareDates = `${dd}-${mm}-${currentDate.getFullYear()}`
     week.push({date:newDate.toDateString(),id:i,compareDate:compareDates});
   }
-
+  
   let CenterData = props.data.map((details)=>{
 
     let datesData = week.map((dates)=>{
@@ -46,8 +45,6 @@ const Results = (props) => {
     }
   });
 
-  console.log(CenterData);
-
   return (
     <div>
       <h2>Results</h2>
@@ -61,20 +58,55 @@ const Results = (props) => {
           </tr>
         </thead>
         <tbody>
-          {CenterData.map((centerinfo) => (
+          {CenterData.map((centerinfo,index) => (
             <tr key={centerinfo.center_id}>
-              <td>
-                {centerinfo.center_name}
+              <td className="centers">
+                {centerinfo.center_name}<br />
                 <span>
                   {centerinfo.center_address},{centerinfo.center_district},
                   {centerinfo.center_state}({centerinfo.center_pincode})
                 </span>
               </td>
               {centerinfo.slots.map((slot) => {
-                return slot ?
+                return slot ? (
                   <td key={slot.session_id}>
-                    <h3>{slot.available_capacity}</h3>
-                  </td> : <td><h4>NA</h4></td>
+                    <div className="flexbox">
+                      <div
+                        className={
+                          slot.available_capacity > 0
+                            ? "capacity_available"
+                            : "booked"
+                        }
+                      >
+                        <p>
+                          {slot.available_capacity > 0
+                            ? slot.available_capacity
+                            : "Booked"}
+                        </p>
+                      </div>
+                      <div className="doses">
+                        <div className="dose1">
+                          dose1: {slot.available_capacity_dose1}
+                        </div>
+                        <div className="dose2">
+                          dose2: {slot.available_capacity_dose2}
+                        </div>
+                      </div>
+                      <div>
+                        <p className={centerinfo.center_fee==="Free"? "free": "paid"}>
+                          {centerinfo.center_fee}
+                        </p>
+                      </div>
+                      <div>
+                      <p>{slot.vaccine}</p>
+                      </div>
+                    </div>
+                  </td>
+                ) : (
+                  <td>
+                    <h4 key={index}>NA</h4>
+                  </td>
+                );
               })}
             </tr>
           ))}

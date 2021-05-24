@@ -98,6 +98,9 @@ const Results = (props) => {
                         </p>
                       </div>
                       <div>
+                        <p className="paid">Age Limit: {slot.min_age_limit}+</p>
+                      </div>
+                      <div>
                       <p>{slot.vaccine}</p>
                       </div>
                     </div>
